@@ -13,7 +13,7 @@ EXENAME := $(NAME)
 LIBTARGET := lib$(NAME)
 
 SRCS := flisp.c builtins.c string.c equalhash.c table.c iostream.c \
-        julia_extensions.c
+        julia_extensions.c safe-ctype.c
 
 LLTDIR := ../support
 LLTSRCDIR := $(SRCDIR)/$(LLTDIR)
