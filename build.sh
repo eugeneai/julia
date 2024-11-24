@@ -1,13 +1,15 @@
 #!/bin/bash
 
+mprefix=/home/eugeneai/.local
+
   make_options=(
-    prefix=/mnt/data/julia
-    bindir=/mnt/data/julia/bin
-    sysconfdir=/mnt/data/julia/etc
-    libexecdir=/mnt/data/julia/lib
+    prefix=$mprefix/julia
+    bindir=$mprefix/bin
+    sysconfdir=$mprefix/etc
+    libexecdir=$mprefix/lib
     USE_BINARYBUILDER=0
     USE_SYSTEM_CSL=1
-    USE_SYSTEM_LLVM=1
+    USE_SYSTEM_LLVM=0
     USE_SYSTEM_LLD=1
     USE_SYSTEM_LIBUNWIND=1
     USE_SYSTEM_PCRE=1
@@ -38,7 +40,6 @@
     JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)"
     VERBOSE=1
     JLDFLAGS="$LDFLAGS -lLLVM-16jl"
-    LLVM_CONFIG=/usr/lib/llvm-julia/bin/llvm-config
   )
 
   LD_LIBRARY_PATH="/usr/lib/mbedtls2" make "${make_options[@]}" "$@"
